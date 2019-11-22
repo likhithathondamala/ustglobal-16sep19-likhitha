@@ -1,0 +1,566 @@
+================database creation,show,use=========================
+create database db_name;
+to view database--
+show databases;
+to use the database----
+use database_name;
+===============DDL===================================================
+================view ,create ,drop tables in database==================
+to view the tables in database---
+show tables;
+to create a table in database---
+create table table-name(colname1 datatype,colname2 datatype);
+to view the table data----
+desc table_name;
+to drop database---
+drop database database_name;
+to drop table in database---
+drop table table_name;
+================alter commands=================================
+to alter the table--
+alter table table_name add column colname datatype;
+to change the column name using alter=-----
+alter table table_name change column old-colname new-colname datatype;
+to drop the column in the table-----
+alter table table_name drop column colname;
+================rename commands===================================
+to rename the table ---
+rename table oldtable_name to newtable_name;
+=======================DML statements==============================
+===================insert command==============================
+to insert the data into the table----
+insert into table_name(colname1,colname2,colname3,.............,colnameN)
+values(value1,value2,value3,........,valueN);
+
+to insert the data if we know the sequence of column names------
+insert into table_name values (value1,value2,......,valueN);
+
+to insert data only for particular columns ------
+insert into table_name (colname1,colname2)
+values(value1,value2);
+example
+=====>>> insert into products(pid,pname)
+    -> values(3,'book');
+====>>>values which are not defined it will  be declared as NULL.
+
+insert n number of record values in a table in  1 query-------
+insert into products(colname1,colname2,colname3) values(value1,value12,value13),(value2,value21,value23);
+==========================update=============================
+update table_name set colname=value;
+============================Delete==========================
+delete from table_name;
+=========================DQl statements=======================
+===================select============================
+to retrieve data from the table
+select colname|*
+from table_name;
+=====================projection=======================
+to retrieve the data of praticular column
+select colname
+from table_name;
+
+
+=======================>>>>>>>>>>>
+create a table along with constraints.
+--------------------------------------
+create table employee (eid int, name varchar(100) not null,mobileno int unique,dob date not null,age int,doj date ,bloodgroup varchar(100), deptno int,salary int, email varchar(120) not null,gender varchar(10),primary key(eid));
+
+=====================Distinct=======================
+select distinct colname
+from tablename;
+
+
+===>>if we use any colname after distinct colname------
+select distinct designation,deptno
+ from employee;
+example output:--
+ designation        | deptno |
++--------------------+--------+
+| software developer |     10 |
+| manager            |     20 |
+| tester             |     30 |
+| hr                 |     20 |
+| tech-support       |     40 |
+| clerk              |     40
+
+
+=====================alias==================
+temporary name to column and table
+  select designation job
+from employee;
+
+=======================using where clause==================
+select *
+from table-name
+where condition;
+====deleting plarticular row=====
+delete from tablname
+where condition;
+======update===========
+update tablename set colname=value
+where condition;
+
+================expression========================
+===for increment using expression===
+select sal salary+5000
+ from employee;
+===for decrement using expression===
+ select salary-5000 sal
+ from employee;
+===for annual_salary===
+ select salary*12 annual_salary
+  from employee;
+===for one day salary====
+ select salary*12/365 oneday
+ from employee;
+
+excluding particular one
+select *
+     from employee
+     where deptno != 20;
+========================
+ select *
+  from employee
+  where salary>30000;
+========================
+select *
+from employee
+where age<22;
+======================
+select name,salary,email,mobileno
+    from employee
+    where age>=22;
+========================
+select name,salary,email,mobileno
+    from employee
+    where age<=28;
+===============And operator===========
+select colname
+from tablename
+where condition1 AND condition2;
+====Query====
+select *
+ from employee
+ where deptno=20 AND salary>30000;
+======>>>>>
+select *
+from employee
+where designation='tester' and age=22;
+=========>>>>
+ select *
+ from employee
+ where age>25 and bloodgroup='B+';
+
+==========OR operator============
+select colname
+from tablename
+where condition1 OR condition2;
+=====Query=======
+ select *
+     from employee
+    where designation='tester' or salary>40000;
+===========>>>>
+ select name,salary,age
+   from employee
+   where deptno=10 or deptno=30 or deptno=50;
+
+=========NOT=======
+select colname
+from tablename
+where NOT condition1
+============================
+ select name,salary,email,mobileno
+     from employee
+     where not salary=30000;
+=====>>>
+select *
+     from employee
+    where not designation='tester';
+====>>>
+ select *
+     from employee
+     where  designation!='tester';
+==================== operators======
+======A
+
+ select *
+    -> from employee
+    -> where not (designation='software developer' and deptno=40);
+=======B
+select *
+    -> from employee
+    -> where designation='software developer' and(deptno=10 or deptno=40);
+===============Special operators==============
+==============IN operator============
+select colname
+from table_name
+where colname in (list of values);
+========>>>
+select *
+ from employee
+where deptno in(40,50,70,80 );
+===
+select name
+ from employee
+where designation in('tester','hr','admin');
+===========>>>>
+ select *
+from employee
+ where designation in ('tester','admin','software developer') and deptno in(10,20) and salary >40000;
+
+=================NOT IN operator==============
+select colname
+from table_name
+where colname not in (list of values);
+=====>>>>
+select *
+from employee
+ where designation not in('tester','admin','hr');
+=======>>>
+select *
+ from employee
+ where age in(20,25,30) and designation not in ('tester','software developer');
+=============BETWEEN OPERATOR================
+select colname
+from table_name
+where colname between value1 and value2;
+===>>>
+select *
+from employee
+ where age between 20 and 40;
+======>>>>>
+select *
+ from employee
+ where doj between '2014-12-31' and '2017-01-01';
+====>>>>>
+ select *
+    -> from employee
+    -> where salary not between 25000 and 30000;
+
+===============IS Operator==========
+select colname
+from table_name
+where colname is null;
+===IS NOT====
+select colname
+from table_name
+where colname is not null;
+===========>>>>>>>
+
+
+
+============LIKE===========
+{(_/underscore) if we want to match one character we use underscore.
+(%/percentage)if we dont know the length of string we use percentage.}
+select colname
+from table_name
+where colname Like '%/_';
+===NOT LIKE=====
+select colnme
+from table_name
+where colnme not like '%/_';
+======>>>>
+select *
+ from employee
+where name like '_i%';
+=====>>>
+select *
+ from employee
+ where name like '%l%l%';
+=====>>>
+ select name
+ from employee
+ where name like 's%n';
+=====>>>
+select *
+ from employee
+ where name like 'a%' or name like 's%';
+
+===>>
+ select name,salary
+from employee
+ where deptno in(10,20,30) and designation like's%';
+==============Functions===================================================
+1.multi-row function-aggregate function
+2.single-row function-scalar funtion
+
+
+=========1.MULTI-ROW FUNCTION===================
+1.avg()
+-------
+select avg(salary)
+from employee;
+===============
+2.count()
+----------
+ select count(*)
+ from employee;
+===================
+3.max()
+-------
+select max(salary)
+ from employee;
+===================
+4.min()
+-------
+select min(salary)
+ from employee;
+==================
+5.sum()
+--------
+select sum(salary)
+ from employee;
+
+=======ORDERBY clause=====================================================
+snytax:
+--------
+select col1,col2 
+from table_name
+order by col1 ASC|DESC;
+note:
+------
+order by will execute after the select clause executed.
+
+order of execution:=
+1.from
+2.where
+3.select
+4.orderby
+=============>>>>>>>>>>>>>>>>
+ select *
+from employee
+ order by salary desc;
+
+
+
+================SUBQUERY=============
+
+SELECT COLNAME
+FROM TABLENAME
+WHERE CONDITION1 OPERATOR (SELECT COLNAME OF CONDITION1
+FROM TABLENAME
+WHERE CONDITION2);
+===============SINGLE ROW SUBQUERY==================
+====>>>
+write a query to display all the records of the employee whos date of joining is same as  'likhitha'.
+QUERY
+------
+ select *
+ from employee
+ where doj=(select doj
+ from employee
+ where name='likhitha');
+=====>>>>
+write a query to display the second maximum salary.
+query
+------
+select max(salary)
+ from employee
+ where salary<(select max(salary)
+                from employee);
+  
+
+NOTE:-
+-----
+SPECIAL OPERATORS FOR MULTI ROW SUBQUERY:
+ANY,ALL,IN.
+ANY: if any one condition is satisfied then we will get the result set.
+ALL:if only all the conditions is satisfied then we will get the result set. 
+
+=====================MULTI ROW SUBQUERY======================
+SYNTAX:-
+--------
+select colname
+from tablename
+where colname spcl operator (select colname
+                              from tablename);
+============>>>>>>>>>
+write a query to display name of the employee who  is working in a location which has atleast 1 'A' in location.
+query:-
+-------
+select name
+ from employee
+where deptno in (select deptno
+                 from department
+                 where location like '%a%');
+======>>>>>
+write a query to display all the record of the employee who is working in admin,operator,developer.
+query:-
+-----
+ select *
+ from employee
+ where deptno in(select deptno
+                from department
+                where dname in ('admin','software developer','operator'));
+============**GROUPBY CLAUSE**=============================
+SYNTAX:-
+--------
+select colname
+from tablename
+where condition (optional)
+groupby expression/colname;
+=======ORDER OF EXECUTION=======
+1.from
+2.where
+3.groupby
+4.select
+======>>>>
+write a query to display maximum salary in each department.
+query:-
+-------
+select max(salary)
+from employee
+group by deptno;
+====>>
+write a query to display the highest salary given to hr  in each department.
+query:-
+-------
+select max(salary)
+from employee
+where designation = 'hr'
+group by deptno;
+============**HAVING CLAUSE**=============
+Having clause will execute only after the execution of group by clause.
+note:-
+-----
+in having clause we can pass only one colname.
+SYNTAX:-
+-------
+select colname
+from tablename
+where condition
+group by colname
+having expression/colname;
+========ORDER OF EXECUTION=======
+1.from
+2.where
+3.groupby
+4.having
+5.select
+========>>>>
+write a query to display  deptno which has atleast 2 employees.
+query:-
+------
+ select deptno
+ from employee
+ group by deptno
+ having count(*)>=2;
+
+
+==============TRANSACTION CONTROL LANGUAGE===============
+1.rollback
+2.commit
+3.savepoint
+========"ROLLBACK"=======
+ if any operation performed and after that if we want to retrieve the previous data then we use ROLLBACK command.
+ rollback;
+========"COMMIT"=======
+COMMIt command is used to save the data permanently.
+commit;
+======="SAVEPOINT"=====
+SAVEPOINT is a point from where we can rollback the data.
+we have to name point.
+===>>>
+ select  *
+ from products;
+
+
+
+
+=============JOINS=================================
+===============CARTESIAN JOIN(CROSS JOIN)==========
+===ANSI====
+syntax:-
+select colname
+from tablename1 cross join tablename2
+on t1.colname =  t2.colname;
+====oracle===
+select colname
+from table1,table2;
+
+query:-
+-------
+(ansi)
+select * from employee cross join department;
+(oracle)
+select
+
+===============INNER JOIN===========
+=====ANSI======
+select colname
+from tablename1 inner join tablename2
+on t1.colname =  t2.colname;
+====oracle=====
+select colname
+from table1,table2
+where t1.colname = t2.colname;
+===>>>
+select *
+from employee e inner join department d
+on e.deptno = d.deptno;
+
+============OUTER JOIN==============
+========LEFT OUTER JOIN======
+====ANSI====
+select colname
+from table1 left join table2
+on <condition>;
+query:-
+-------
+select *
+from employee e left join department d
+on e.deptno = d.deptno
+=====oracle=====
+select colname
+from table1,table2
+where t1.colname = t2.colname(+);
+query:-
+------
+select *
+from employee e ,department d
+where e.deptno = d.deptno(+);
+=========RIGHT OUTER JOIN======
+====ANSI====
+Select colname
+from table1 right join table2
+on <condition>;
+query:-
+------
+select *
+ from employee e right join department d
+ on e.deptno = d.deptno;
+=====oracle=====
+select colname
+from table1,table2
+where t1.colname(+) = t2.colname;
+===========FULL OUTER JOIN=======
+SYNTAX:-
+--------
+select colname
+from table1 full outer join table2
+on t1.colname = t2.colname;
+query:-
+-----
+select *
+from employee e full outer join department d
+on e.deptno = d.deptno;
+
+================NATURAL JOIN==============
+SYNTAX:-
+select colname
+from table1 natural join table2;
+query:-
+select *
+ from employee natural join department;
+=================SELF JOIN===========
+syntax:-
+-------
+select colname
+from employee join department;
+query:-
+------
+select *
+from employee e1 join employee e2
+on e1.deptno = e2.deptno;
+
+
