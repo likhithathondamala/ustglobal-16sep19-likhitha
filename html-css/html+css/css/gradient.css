@@ -1,0 +1,5 @@
+#grad{
+    height: 500px;
+    background: linear-gradient(to left , red, black, blue)
+    /* background:radial-gradient( red, black, blue, green, violet) */
+}

@@ -1,0 +1,39 @@
+h1{
+    color: black;
+    text-align: center;
+    
+}
+form{
+   border:1px solid black;
+   padding-left:50px;
+   padding:20px;
+   margin-top:180px;
+   margin-left: 200px;
+    width : 300px;;
+    text-align : center;
+    text-transform: capitalize; 
+    background-image: url("D:/ust global/html project/html+css/images/flower-4333046__340.jpg");
+    background-clip: content-box;
+
+}
+body{
+    background-image: url("D:/ust global/html project/html+css/images/flower-4333046__340.jpg");
+
+}
+
+input[type="text"],input[type="password"]{
+    width:200px;
+    height:20px;
+    border: 1px solid black;
+    border-radius: 60px;
+
+}
+input[type="text"]:focus,input[type="password"]{
+    outline:none;
+}
+input[type="submit"]{
+    margin-top:10px;
+    padding:10px 35px;
+    border-radius:50px;
+    background-color: blueviolet;
+}
