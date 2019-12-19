@@ -1,0 +1,40 @@
+
+  <div>
+    <div class="card  text-black">
+      <div class="card-img-overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+  
+            <div class="container ">
+              <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+                <thead>
+                  <tr class="text-center text-dark">
+                    <th>Librarian ID</th>
+                    <th>Librarian Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Type</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let librarians of librarian" class="text-center text-info">
+                    <td>{{librarians.id}}</td>
+                    <td>{{librarians.name}}</td>
+                    <td>{{librarians.email}}</td>
+                    <td>{{librarians.password}}</td>
+                    <td>{{librarians.type}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteLibrarian(librarians)"><i
+                          class="fas fa-trash-alt">Delete</i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

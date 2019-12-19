@@ -1,0 +1,37 @@
+<div >
+    <div class="card  text-black">
+      <div class="card-img-overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+  
+              <div class="container ">
+                <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+                  <thead>
+                    <tr class="text-center text-dark">
+                      <th>Book ID</th>
+                      <th>Book Name</th>
+                      <th>Author</th>
+                      <th>Publisher</th>
+                      <th>Year Of Publication</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let books of book" class="text-center text-info">
+                      <td>{{books.bid}}</td>
+                      <td>{{books.bname}}</td>
+                      <td>{{books.author}}</td>
+                      <td>{{books.publisher}}</td>
+                      <td>{{books.yearofpublication}}</td>
+                      <td><button class="btn btn-danger" (click)="deleteLibrarian(books)"><i class="fas fa-trash-alt">Delete</i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

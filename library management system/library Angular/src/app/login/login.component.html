@@ -1,0 +1,41 @@
+<div class="container" >
+    <div class="card" style="width: 600px; margin: auto;">
+      <div class="card-header bg-primary text-white">
+        <h4 class="text-uppercase text-center">Login</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-xs-12">
+            <form  #form="ngForm" (ngSubmit)="login(form)" method="POST" >
+              <div class="form-group mt-2">
+                <label for="id">User ID</label>  
+                  <input type="number" name="id" required placeholder="Enter Your ID" class="form-control" 
+                  #id="ngModel"
+                    ngModel>
+                  <div *ngIf="id.invalid && id.touched">
+                    <p *ngIf="id.errors.required" class="text-danger">*This field is mandatory
+                      <p *ngIf="id.errors.pattern" class="text-danger">*id should be number
+                     
+                 
+                </div>
+              </div>
+  
+              <div class="form-group mt-2">
+                <label for="password">Password</label>         
+                  <input type="password" name="password" required minlength="6" maxlength="12" placeholder="Enter Password"
+                    class="form-control" pattern="" #password="ngModel" ngModel  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" >
+                  <div *ngIf="password.invalid && password.touched">
+                    <p *ngIf="password.errors.required" class="text-danger">*This field is mandatory
+                      <p *ngIf="password.errors.minlength" class="text-danger">*This field accepts minimum
+                        5 characters
+                        <p *ngIf="password.errors.pattern" class="text-danger">*password must contain one uppercase,one lowercase,one number and  one special character
+                  </div>
+                
+              </div>
+              <div class="form-group">
+                <button type="submit" [disabled]="form.invalid"
+                  class="btn btn-outline-primary rounded-0 float-right"><i class="fas fa-sign-in-alt">Login</i></button>
+              </div>
+            </form>
+          </div>
+        </div>

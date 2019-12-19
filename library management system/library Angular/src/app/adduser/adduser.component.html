@@ -1,0 +1,65 @@
+<div class="container py-5" >
+  <div class="card" style="width: 600px; margin: auto;">
+    <div class="card-header bg-primary text-white">
+      <h4 class="text-uppercase text-center">Add Student</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-sm-6 col-md-6 col-xs-12">
+          <form action="" #registerForm="ngForm" (ngSubmit)=" register(registerForm)" method="POST" role="form">
+
+            <div class="form-group mt-2">
+              <label for="name">Name</label>
+              
+                <input type="text" name="name" required minlength="3" placeholder="Enter Your Name" class="form-control"
+                  #name="ngModel" ngModel  pattern="[a-zA-Z ]*">
+                <div *ngIf="name.invalid && name.touched">
+                  <p *ngIf="name.errors.required" class="text-danger">*This field is mandatory
+                    <p *ngIf="name.errors.minlength" class="text-danger">*This field accepts minimum
+                      3 characters
+                      <p *ngIf="name.errors.pattern" class="text-danger">*name should contain only alphabets
+                </div>
+              </div>
+            
+            <div class="form-group mt-2">
+              <label for="email">Email</label>
+              
+                <input type="email" name="email" email required placeholder="Enter your email" class="form-control"
+                  #email="ngModel" ngModel pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <div *ngIf="email.invalid && email.touched">
+                  <p *ngIf="email.errors.required" class="text-danger">*This field is mandatory
+                    <p *ngIf="email.errors.minlength" class="text-danger">*This field accepts
+                      minimum 3 characters
+                      <p *ngIf = "email.errors.email" class="text-danger">*Email must be valid</p>
+                      <p *ngIf="email.errors.pattern" class="text-danger">*Email should be clear 
+               
+                </div>
+              </div>
+            
+
+            <div class="form-group mt-2">
+              <label for="password">Password</label>
+              
+                <input type="password" name="password" required minlength="6" placeholder="Enter Password"
+                  class="form-control" #password="ngModel" ngModel pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$">
+                <div *ngIf="password.invalid && password.touched">
+                  <p *ngIf="password.errors.required" class="text-danger">*This field is mandatory
+                    <p *ngIf="password.errors.minlength" class="text-danger">*This field accepts
+                      minimum 6 characters
+                      <p *ngIf="password.errors.pattern" class="text-danger">*password must contain one uppercase,one lowercase,one number and  one special character
+ 
+                </div>
+              </div>
+         
+            <div class="form-group">
+              <button type="submit" [disabled]="registerForm.invalid"
+                class="btn btn-outline-primary rounded-0 float-right"><i class="fas fa-plus-square">Add Student</i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      

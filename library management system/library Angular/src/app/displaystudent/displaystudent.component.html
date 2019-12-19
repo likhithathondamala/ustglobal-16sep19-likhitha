@@ -1,0 +1,49 @@
+<form #Student="ngForm" (ngSubmit)="getStudentInfo(Student)" class = "col-md-4 offset-4" method="GET">
+
+  <input class="form-control mt-5" type="number" name="id" #id="ngModel" ngModel required placeholder="Enter Student Id">
+  <div *ngIf="id.invalid && id.touched">
+    <p *ngIf="id.errors.required" class="text-danger">This field is mandatory</p>
+  </div>
+
+  <div class="form-group mt-3">
+    <button type="submit" [disabled]="Student.invalid">GetInfo</button>
+  </div>
+</form>
+<div>
+  <div class="card  text-black">
+    <div class="card-img-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+
+          <div class="container ">
+            <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+              <thead>
+                <tr class="text-center text-dark">
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Type</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let students of student" class="text-center text-info">
+                  <td>{{students.id}}</td>
+                  <td>{{students.name}}</td>
+                  <td>{{students.email}}</td>
+                  <td>{{students.password}}</td>
+                  <td>{{students.type}}</td>
+                  <td><button class="btn btn-danger" (click)="deleteLibrarian(students)"><i
+                        class="fas fa-trash-alt">Delete</i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

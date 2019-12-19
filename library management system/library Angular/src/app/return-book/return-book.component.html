@@ -1,0 +1,93 @@
+
+<div class="container py-5" >
+  <div class="card" style="width: 600px; height: 650px; margin: auto;">
+    <div class="card-header bg-info text-white">
+      <h4 class=" text-center ">Add Book</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-sm-6 col-md-6 col-xs-12">
+              <form action="" #returnForm="ngForm" (ngSubmit)="issue(returnForm)" method="POST"
+              role="form">
+
+            <div class="form-group mt-2">
+                  <label for="bname">Transaction Id</label>
+              
+                <input type="text" name="transactionId" required  placeholder="Enter Transaction Id"
+                class="form-control" #transactionId="ngModel" ngModel>
+                <div *ngIf="transactionId.invalid && transactionId.touched">
+                  <p *ngIf="transactionId.errors.required" class="text-danger">*This field is mandatory
+                    
+                </div>
+              </div>
+            
+
+            <div class="form-group mt-2">
+                  <label for="bookid">Book Id</label>
+             
+                <input type="number" name="bid" required 
+                              placeholder="Enter  Book Id" class="form-control" #bid="ngModel" ngModel>
+                <div *ngIf="bid.invalid && bid.touched">
+                  <p *ngIf="bid.errors.required" class="text-danger">*This field is mandatory
+                    
+                </div>
+              </div>
+            
+
+            
+            <div class="form-group mt-2">
+                  <label for="id">Student Id</label>
+             
+                
+                <input type="number" name="id" required  placeholder="Enter id"
+                              class="form-control" #id="ngModel" ngModel>
+                <div *ngIf="id.invalid && id.touched">
+                  <p *ngIf="id.errors.required" class="text-danger">*This field is mandatory
+                   
+                </div>
+              </div>
+            
+
+            <div class="form-group mt-2">
+                  <label for="registrationId">registrationId</label>
+                  <input type="number" name="registrationId" required  placeholder="Enter id"
+                              class="form-control" #registrationId="ngModel" ngModel>
+                <div *ngIf="registrationId.invalid && registrationId.touched">
+                  <p *ngIf="registrationId.errors.required" class="text-danger">*This field is mandatory
+                   
+                </div>
+              </div>
+              
+             
+              
+              <div class="form-group mt-2">
+                  <label for="returnDate">Return Date</label>
+                <input type="date" name="returnDate" required 
+                placeholder="Enter Return Date" class="form-control"
+                #returnDate="ngModel" ngModel>
+                <div *ngIf="returnDate.invalid && returnDate.touched">
+                  
+                    
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                  <label for="fine">Fine</label>
+             
+                
+                <input type="number" name="fine" required  placeholder="Enter fine"
+                              class="form-control" #fine="ngModel" ngModel>
+                <div *ngIf="fine.invalid && fine.touched">
+                  <p *ngIf="fine.errors.required" class="text-danger">
+                </div>
+              </div>
+           
+
+
+            <div class="form-group">
+              <button type="submit" [disabled]="returnForm.invalid"
+                class="btn btn-outline-primary rounded-0 float-right"><i class="fas fa-plus-square">Issue Book</i></button>
+            </div>
+          </form>
+        </div>
+      </div>
