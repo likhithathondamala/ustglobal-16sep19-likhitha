@@ -1,0 +1,90 @@
+<div class="container py-5" >
+    <div class="card" style="width: 600px; height: 600px; margin: auto;">
+      <div class="card-header bg-info text-white">
+        <h4 class=" text-center ">Update Product</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+  
+          <div class="col-sm-6 col-md-6 col-xs-12">
+                <form action="" #updateproductForm="ngForm" (ngSubmit)="updateproduct(updateproductForm)" method="POST"
+                role="form">
+  
+              <div class="form-group mt-2">
+                    <label for="bname">Product Name</label>
+                
+                  <input type="text" name="name" required minlength="3" placeholder="Enter Product Name"
+                  class="form-control" #name="ngModel" ngModel>
+                  <div *ngIf="name.invalid && name.touched">
+                    <p *ngIf="name.errors.required" class="text-danger">*This field is mandatory
+                      <p *ngIf="name.errors.minlength" class="text-danger">*This field accepts minimum
+                        3 characters
+                  </div>
+                </div>
+              
+  
+              <div class="form-group mt-2">
+                    <label for="category">Category</label>
+               
+                  <input type="text" name="category" required minlength="4"
+                                placeholder="Enter  Category" class="form-control" #category="ngModel" ngModel>
+                  <div *ngIf="category.invalid && category.touched">
+                    <p *ngIf="category.errors.required" class="text-danger">*This field is mandatory
+                      <p *ngIf="category.errors.minlength" class="text-danger">*This field accepts
+                        minimum 4 characters
+                  </div>
+                </div>
+              
+  
+              
+              <div class="form-group mt-2">
+                    <label for="company">Company</label>
+               
+                  
+                  <input type="text" name="company" required minlength="4" placeholder="Enter Publisher"
+                                class="form-control" #company="ngModel" ngModel>
+                  <div *ngIf="company.invalid && company.touched">
+                    <p *ngIf="company.errors.required" class="text-danger">*This field is mandatory
+                      <p *ngIf="company.errors.minlength" class="text-danger">*This field accepts
+                        minimum 4 characters
+                  </div>
+                </div>
+              
+
+              <div class="form-group mt-2">
+                    <label for="quantity">Quantity</label>
+                
+                 
+                  <input type="number" name="quantity" required 
+                  placeholder="Enter Quantity of Product" class="form-control"
+                  #quantity="ngModel" ngModel>
+                  <div *ngIf="quantity.invalid && quantity.touched">
+                    <p *ngIf="quantity.errors.required" class="text-danger">*This field is mandatory
+                      
+                  </div>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label for="price">Price</label>
+                
+                 
+                  <input type="number" name="price" required 
+                  placeholder="Enter Price of Product" class="form-control"
+                  #price="ngModel" ngModel>
+                  <div *ngIf="price.invalid && price.touched">
+                    <p *ngIf="price.errors.required" class="text-danger">*This field is mandatory
+                      
+                  </div>
+                </div>
+             
+
+
+              <div class="form-group">
+                <button type="submit" [disabled]="updateproductForm.invalid"
+                  class="btn btn-outline-primary rounded-0 float-right"><i class="fas fa-plus-square">Add Product</i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+    
+

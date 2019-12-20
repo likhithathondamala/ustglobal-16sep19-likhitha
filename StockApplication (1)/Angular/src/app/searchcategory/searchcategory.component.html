@@ -1,0 +1,48 @@
+
+<form #Productname="ngForm" (ngSubmit)="getProductInfo(Productname)" class = "col-md-4 offset-4" method="GET">
+
+    <input class="form-control mt-5" type="text" name="category" #name="ngModel" ngModel required placeholder="Enter Product category">
+    <div *ngIf="name.invalid && name.touched">
+      <p *ngIf="name.errors.required" class="text-danger">This field is mandatory</p>
+    </div>
+    <div>
+      <button type="submit" [disabled]="Productname.invalid">GetInfo</button>
+    </div>
+  </form>
+  <div class="card  text-black">
+    <div class="card-img-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+
+          <div class="container ">
+            <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+              <thead>
+                <tr class="text-center text-dark">
+                  <th>Id</th>
+                  <th> Name</th>
+                  <th>Category</th>
+                  <th>Company</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let productnames of data " class="text-center text-info">
+                  <td>{{productnames.id}}</td>
+                  <td>{{productnames.name}}</td>
+                  <td>{{productnames.category}}</td>
+                  <td>{{productnames.company}}</td>
+                  <td>{{productnames.quantity}}</td>
+                  <td>{{productnames.price}}</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
