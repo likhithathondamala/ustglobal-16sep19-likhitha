@@ -68,7 +68,7 @@ public class Mail {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="user_mail", joinColumns = @JoinColumn(name="mid") , inverseJoinColumns = @JoinColumn(name="id"))
-	public List<User> user;
+	private List<User> user;
 	public List<User> getUser() {
 		return user;
 	}
