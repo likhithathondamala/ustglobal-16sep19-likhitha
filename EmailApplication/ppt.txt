@@ -1,0 +1,6 @@
+1.start with problem statements
+2.soutions came with that 
+3.tech and tools used
+4.arth
+5.flowchart
+6.modules
