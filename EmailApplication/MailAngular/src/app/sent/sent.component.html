@@ -1,0 +1,17 @@
+
+<div class="panel-body">
+    <table class="table table-hover table-sm table-bordered">
+
+        <thead class="thead-light">
+            <tr>
+                <th scope="row">MESSAGE</th>            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mails of mail">
+               
+                <td>{{mails.message}}</td>
+            
+            </tr>
+        </tbody>
+    </table>

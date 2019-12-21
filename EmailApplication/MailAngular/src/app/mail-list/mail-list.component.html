@@ -1,0 +1,24 @@
+
+<div class="panel-body">
+    <table class="table table-hover table-sm table-bordered">
+
+        <thead class="thead-light">
+            <tr>
+                
+                <th scope="row">MESSAGE</th>
+                <th scope="columnspan=1px" >DELETE</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mails of mail">
+               
+                <td>{{mails.message}}</td>
+                
+               
+                <td>
+                    <button (click)="delete(mails)" type="button" class="btn btn-danger">Remove</button>
+                
+            </tr>
+        </tbody>
+    </table>

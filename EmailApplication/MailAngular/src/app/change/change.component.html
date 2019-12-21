@@ -1,0 +1,31 @@
+<div class="col-md-4 offset-4 mt-5 card card-body">
+    <div class="card-header" style="background-color: darkred">
+        <h4 style="text-align: center; ;color: white;">Change Password</h4>
+    </div><br>
+    <form #form='ngForm' (ngSubmit)="changeform(form)">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-control mb-3" #email="ngModel" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <div *ngIf="email.touched  && email.invalid">
+            <p *ngIf="email.errors.required" class="text-danger" style="font-size: smaller;">*This field is mandatory</p>
+            <p *ngIf="email.errors.pattern" class="text-danger" style="font-size: smaller;">*Invalid email</p>
+        </div>
+
+        <label for="new password">New Password</label>
+        <input type="password" name="newpassword" id="newpassword" class="form-control mb-3" #newpassword="ngModel" ngModel required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+        <div *ngIf="newpassword.touched  && newpassword.invalid">
+            <p *ngIf="newpassword.errors.required" class="text-danger" style="font-size: smaller;">*This field is mandatory</p>
+            <p *ngIf="newpassword.errors.minlength" class="text-danger" style="font-size: smaller;">*Invalid Password</p>
+            <p *ngIf="newpassword.errors.pattern" class="text-danger" style="font-size: smaller;">*Invalid Password</p>
+        </div>
+
+        <label for="confirm password">Confirm Password</label>
+        <input type="password" name="confirmpassword" id="confirmpassword" class="form-control mb-3" #confirmpassword="ngModel" ngModel required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+        <div *ngIf="confirmpassword.touched  && confirmpassword.invalid">
+            <p *ngIf="confirmpassword.errors.required" class="text-danger" style="font-size: smaller;">*This field is mandatory</p>
+            <p *ngIf="confirmpassword.errors.minlength" class="text-danger" style="font-size: smaller;">*Invalid Password</p>
+            <p *ngIf="confirmpassword.errors.pattern" class="text-danger" style="font-size: smaller;">*Invalid Password</p>
+        </div>
+
+        <button type="submit" class="btn btn-success float-right" [disabled]="form.invalid">Change</button>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="col-md-4 offset-md-4 mt-5 card card-body">
+    <div class="card-header" style="background-color: darkgreen;">
+    <h3 style="text-align: center; color: white;" >SIGN IN</h3>
+</div><br>
+    <form #form='ngForm' (ngSubmit)="Loginform(form)">
+        <label for="email">Email</label>
+       
+
+        <input type="email" name="email" id="email" class="form-control mb-3" #email="ngModel" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+     
+    
+        <div *ngIf="email.touched  && email.invalid">
+            <p *ngIf="email.errors.required" class="text-danger" style="font-size: smaller;">*This field is mandatory</p>
+            <p *ngIf="email.errors.pattern" class="text-danger" style="font-size: smaller;">*Invalid email</p>
+        </div>
+        <label for="password">Password</label>
+      
+        <input type="password" name="password" id="password" class="form-control mb-3" #password="ngModel" ngModel required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+      
+        <div *ngIf="password.touched  && password.invalid">
+            <p *ngIf="password.errors.required" class="text-danger" style="font-size: smaller;">*This field is mandatory</p>
+            <p *ngIf="password.errors.minlength" class="text-danger" style="font-size: smaller;">*Invalid Password</p>
+            <p *ngIf="password.errors.pattern" class="text-danger" style="font-size: smaller;">*Invalid Password</p>
+        </div>
+
+      <div class="float-left">
+        <span class="password">
+          <a routerLink="/forgot">Forgot Password?</a>
+        </span>
+      </div>
+       
+     <button class="btn btn-outline-success" type="submit" style="float: right;" [disabled]="form.invalid" >Sign in</button>
+    </form>
+</div>
+<div>
+    <h6 style="text-align: center;"><a routerLink="/register">create an Account</a></h6>
+</div>
+
