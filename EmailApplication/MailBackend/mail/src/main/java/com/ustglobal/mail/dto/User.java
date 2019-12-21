@@ -49,7 +49,7 @@ public class User {
 	}
 	
 	@ManyToMany(mappedBy = "user")
-	public List<Mail> mail;
+	private List<Mail> mail;
 	public List<Mail> getMail() {
 		return mail;
 	}
